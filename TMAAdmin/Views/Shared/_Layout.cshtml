@@ -10,7 +10,13 @@
     <title>@ViewBag.Title -  TMA Tech</title>
 
     @Styles.Render("~/Content/css")
+
+    
     @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/datatable")
 </head>
 <body>
     <nav class="navbar sticky-top navbar-light bg-light flex-md-nowrap p-0  header-bg-color">
@@ -30,13 +36,13 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active " : "")" href="@Url.Action("Index", "Home")">
                                 <span data-feather="home"></span>
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Transactions" ? "active " : "")" href="@Url.Action("Index", "Transactions")">
                                 <span data-feather="file"></span>
                                 Transactions
                             </a>
@@ -104,9 +110,8 @@
     </div>
 
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("obj/scripts", required: false)
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
